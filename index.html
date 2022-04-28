@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>SUDOKU_PPII</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Maria Alves" />
+    <meta name="description" content="Primeiro trabalho de PPI- Jogo Sudoku" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="funcoes.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+   
+</head>
+<body>
+    <header id="topo">
+        <img src="img.png" alt="Banner com o nome Sudoku em destaque"/>
+    </header>
+    <nav>
+        <a href="#">HOME</a>
+        <a id="regras" href="#pag_regras">REGRAS</a>
+        <a href="#">SOBRE A AUTORA</a> 
+    </nav>
+    
+    <br/>
+<section id="pag_apresenta">
+    <h2>BEM VINDO!</h2>
+    <div class="destacar">
+        <p class="descri">Aplicação web em JavaScript desenvolvida na disciplina de Programação para Internet I do Instituto Federal de Brasilia</p>
+        <p>Essa página contém o classico jogo SUDOKU</p>
+    </div>
+    <div class="destacar">
+        <p>Vamos jogar?</p>
+        <p>De um click no botão e bom jogo.</p>
+    </div>
+</section>
+
+<section class="abas" id="pag_regra">
+    <h2>REGRAS</h2>
+    <div class="destacar">
+    <ol>
+        <li><h3>Cada linha deve conter os números de 1 a 9, sem repetições</h3>
+            <p>O jogador deve preencher cada linha da tabela com cuidado para que não existam duplicados nestas no final. A ordem numérica é irrelevante.
+            Cada puzzle, independentemente do seu nível de dificuldade, inicia com números pré-colocados na tabela. O jogador deve utilizar estes dígitos 
+            como pistas para encontrar quais os números em falta em cada linha e as suas posições.</p></li>
+        <li><h3>Os números de 1 a 9 apenas podem estar presentes uma vez por coluna</h3>
+            <p>As regras do Sudoku para as colunas são exatamente as mesmas que para as linhas. Também para estas o jogador deve preencher as quadrículas com os números de 1 a 9, sem repetições por coluna.
+            Os números oferecidos ao início do puzzle funcionam como pistas para descobrir quais são os dígitos em falta em cada coluna.</p></li>
+        <li><h3>Cada dígito apenas pode estar presente uma vez por grupo</h3>
+            <p>Uma tabela de Sudoku tradicional de 9 x 9 está dividida em 9 grupos mais pequenos de 3x3. Os números de 1 a 9 apenas podem estar presentes uma vez em cada um destes grupos.
+            Na prática, isto significa que o processo de preencher as colunas e linhas sem duplicados encontra dentro de cada grupo restrições ao posicionamento dos números.</p></li>
+        <li><h3>O valor da soma de cada linha, coluna e grupo é de 45</h3>
+        <p>Para descobrir quais os números em falta em cada linha, coluna ou grupo, o jogador pode simplesmente contá-los ou praticar os seus dotes matemáticos e somá-los.
+            Quando não existem dígitos duplicados a soma individual de cada linha, coluna e grupo é sempre de 45</p></li>
+    </ol>
+    </div>
+</section>
+
+<section class="abas" id="pag_autora">
+    <h2>QUEM SOU EU</h2>
+    <fieldset><legend>Autora</legend>
+    <p class="descri">Eu sou a Maria,
+    uma pessoa fascinada com o mundo da programação. </p>
+    <p>Atualmente estou no curso de Sistemas Para Internet no Instituto Federal de Brasilia-Campus Brasília</p>
+    </fieldset>
+    <fieldset><legend>Contato</legend>
+        <div>
+            <p>Telegram: @MariaRomeiro</p>
+            
+            <p>Email: maria.alves@estudante.ifb.edu.br</p> 
+		</div>
+    </fieldset>
+    <img src="ifb.png" alt="Logo do IFB"/>
+</section>
+<section id="elemen_jogo">
+    <center><a href="#elemen_jogo"><button id="bt_inicio">COMEÇAR</button></a></center>
+    <center>
+        <span><button id="bt_zerar">LIMPAR TUDO</button>
+        <button id="bt_outro">OUTRO</button></span>
+    </center>
+    <div id="alerta_jogada">
+        <p></p>
+    </div>
+    <table id="jogo">
+        <tbody>
+        <tr class="0">
+            <td class="0"><input type="text" maxlength="1" /></td>
+            <td class="1"><input type="text" maxlength="1" /></td>
+            <td class="2" id="c0"><input type="text" maxlength="1" /></td>
+            <td class="3"><input type="text" maxlength="1" /></td>
+            <td class="4"><input type="text" maxlength="1" /></td>
+            <td class="5" id="c1"><input type="text" maxlength="1" /></td>
+            <td class="6"><input type="text" maxlength="1" /></td>
+            <td class="7"><input type="text" maxlength="1" /></td>
+            <td class="8"><input type="text" maxlength="1" /></td> 
+        </tr>
+        <tr class="1">
+            <td class="0"><input type="text" maxlength="1" /></td>
+            <td class="1"><input type="text" maxlength="1" /></td>
+            <td class="2" id="c2"><input type="text" maxlength="1" /></td>
+            <td class="3"><input type="text" maxlength="1" /></td>
+            <td class="4"><input type="text" maxlength="1" /></td>
+            <td class="5" id="c3"><input type="text" maxlength="1" /></td>
+            <td class="6"><input type="text" maxlength="1" /></td>
+            <td class="7"><input type="text" maxlength="1" /></td>
+            <td class="8"><input type="text" maxlength="1" /></td> 
+        </tr>
+        <tr class="2" id="bordain">
+            <td class="0"><input type="text" maxlength="1" /></td>
+            <td class="1"><input type="text" maxlength="1" /></td>
+            <td class="2" id="c4"><input type="text" maxlength="1" /></td>
+            <td class="3"><input type="text" maxlength="1" /></td>
+            <td class="4"><input type="text" maxlength="1" /></td>
+            <td class="5" id="c5"><input type="text" maxlength="1" /></td>
+            <td class="6"><input type="text" maxlength="1" /></td>
+            <td class="7"><input type="text" maxlength="1" /></td>
+            <td class="8"><input type="text" maxlength="1" /></td>
+        </tr>
+        <tr class="3">
+            <td class="0"><input type="text" maxlength="1" /></td>
+            <td class="1"><input type="text" maxlength="1" /></td>
+            <td class="2" id="c6"><input type="text" maxlength="1" /></td>
+            <td class="3"><input type="text" maxlength="1" /></td>
+            <td class="4"><input type="text" maxlength="1" /></td>
+            <td class="5" id="c7"><input type="text" maxlength="1" /></td>
+            <td class="6"><input type="text" maxlength="1" /></td>
+            <td class="7"><input type="text" maxlength="1" /></td>
+            <td class="8"><input type="text" maxlength="1" /></td>
+        </tr>    
+        <tr class="4">
+            <td class="0"><input type="text" maxlength="1" /></td>
+            <td class="1"><input type="text" maxlength="1" /></td>
+            <td class="2" id="c8"><input type="text" maxlength="1" /></td>
+            <td class="3"><input type="text" maxlength="1" /></td>
+            <td class="4"><input type="text" maxlength="1" /></td>
+            <td class="5" id="c9"><input type="text" maxlength="1" /></td>
+            <td class="6"><input type="text" maxlength="1" /></td>
+            <td class="7"><input type="text" maxlength="1" /></td>
+            <td class="8"><input type="text" maxlength="1" /></td>
+        </tr>   
+        <tr class="5" id="bordain">
+            <td class="0"><input type="text" maxlength="1" /></td>
+            <td class="1"><input type="text" maxlength="1" /></td>
+            <td class="2" id="c10"><input type="text" maxlength="1" /></td>
+            <td class="3"><input type="text" maxlength="1" /></td>
+            <td class="4"><input type="text" maxlength="1" /></td>
+            <td class="5" id="c11"><input type="text" maxlength="1" /></td>
+            <td class="6"><input type="text" maxlength="1" /></td>
+            <td class="7"><input type="text" maxlength="1" /></td>
+            <td class="8"><input type="text" maxlength="1" /></td>
+        </tr>   
+        <tr class="6">
+            <td class="0"><input type="text" maxlength="1" /></td>
+            <td class="1"><input type="text" maxlength="1" /></td>
+            <td class="2" id="c12"><input type="text" maxlength="1" /></td>
+            <td class="3"><input type="text" maxlength="1" /></td>
+            <td class="4"><input type="text" maxlength="1" /></td>
+            <td class="5" id="c13"><input type="text" maxlength="1" /></td>
+            <td class="6"><input type="text" maxlength="1" /></td>
+            <td class="7"><input type="text" maxlength="1" /></td>
+            <td class="8"><input type="text" maxlength="1" /></td>
+        </tr>   
+        <tr class="7">
+            <td class="0"><input type="text" maxlength="1" /></td>
+            <td class="1"><input type="text" maxlength="1" /></td>
+            <td class="2" id="c14"><input type="text" maxlength="1" /></td>
+            <td class="3"><input type="text" maxlength="1" /></td>
+            <td class="4"><input type="text" maxlength="1" /></td>
+            <td class="5" id="c15"><input type="text" maxlength="1" /></td>
+            <td class="6"><input type="text" maxlength="1" /></td>
+            <td class="7"><input type="text" maxlength="1" /></td>
+            <td class="8"><input type="text" maxlength="1" /></td>
+        </tr>   
+        <tr class="8">
+            <td class="0"><input type="text" maxlength="1" /></td>
+            <td class="1"><input type="text" maxlength="1" /></td>
+            <td class="2" id="c16"><input type="text" maxlength="1" /></td>
+            <td class="3"><input type="text" maxlength="1" /></td>
+            <td class="4"><input type="text" maxlength="1" /></td>
+            <td class="5" id="c17"><input type="text" maxlength="1" /></td>
+            <td class="6"><input type="text" maxlength="1" /></td>
+            <td class="7"><input type="text" maxlength="1" /></td>
+            <td class="8"><input type="text" maxlength="1" /></td>
+        </tr>   
+        </tbody>  
+    </table>
+    <div id="parabens">
+        <p id="msg_parabens"></p>
+        <img/>
+    </div>
+</section>
+    <footer>
+		<p>Desenvolvido por  Maria Alves </p>
+    </footer>
+</body>
+</html>
