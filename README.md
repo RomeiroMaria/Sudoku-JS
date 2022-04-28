@@ -1,4 +1,4 @@
-# Programação para Internet II (2021/2) - TSI
+# Programação para Internet I (2021) - TSI
 
 ## :rocket: Olá! Bem vindo ao projeto de Sudoku feito com JavaScript.
 ---
